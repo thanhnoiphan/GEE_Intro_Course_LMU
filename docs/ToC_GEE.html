@@ -315,7 +315,7 @@ div.tocify {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="./Schedule2.html">Schedule</a>
+  <a href="./Schedule.html">Schedule</a>
 </li>
 <li>
   <a href="./ToC_GEE.html">Table of Contents</a>
@@ -386,23 +386,25 @@ class="section level3">
 <b><strong>A very brief introduction</strong> </b>
 </summary>
 <p>📄 Data Management and Analysis in GEE <br></p>
-<p>📄 Machine Learning in GEE <br></p>
-<p>📄 - Suppervised Land Cover Classification <br></p>
-<p><br></p>
 </details>
 <details>
 <summary>
 <b><strong>Hands-on Practice</strong> </b>
 </summary>
-<p>💻 - Calculating Image Indices <br> 💻 - Cloud Masking <br> 💻 -
-Image Composition <br> 😮 - Tricks, and Tips <br></p>
-<p>💻 Land Cover Classification</p>
-<ol style="list-style-type: decimal">
-<li>Select Area of Interest <br></li>
-<li>Prepare input Data (Satelite Data, Auxiliary Data) <br></li>
-<li>Prepare Training and Validation Samples <br> <ins>Additional Task
-</ins> : Optimizing input data for a LUC result.</li>
-</ol>
+<p>💻 Calculating Image Indices <br></p>
+<p>💻 Cloud Masking <br></p>
+<p>💻 Image Composition <br></p>
+<p>📝 Tricks, and Tips <br></p>
+</details>
+<details>
+<summary>
+<b><strong>Applications: Land Cover Classification</strong> </b>
+</summary>
+<p>📝 A very brief introduction <br> 🔸Machine Learning in GEE <br>
+🔸Supervised Land Cover Classification <br></p>
+<p>1️⃣️Select Area of Interest <br></p>
+<p>2️⃣Prepare input Data (Satellite Data, Auxiliary Data) <br></p>
+<p>3️⃣Prepare Training and Validation Samples <br></p>
 </div>
 </div>
 <div id="day-3" class="section level1">
@@ -413,27 +415,24 @@ class="section level3">
 </details>
 <details>
 <summary>
-<b><strong>Run the LUC using prepared inputs</strong> </b>
+<b><strong>Land Cover Classification (Cont.)</strong> </b>
 </summary>
-<p>💻 Land Cover Classification (Cont.)</p>
-<ol start="4" style="list-style-type: decimal">
-<li>Apply ML Classifier (e.g., Random Forest) <br></li>
-<li>Accuracy Assessment <br></li>
-</ol>
+<p>4️⃣Apply ML Classifier (e.g., Random Forest) <br> 5️⃣Accuracy
+Assessment <br></p>
 </details>
 <details>
 <summary>
 <b><strong>Explore the LUC results</strong> </b>
 </summary>
-<p>📖Discussing the classification results 😮 Lesson Learned, Tricks,
-and Tips for better LUC Results</p>
+<p>📝Discussing the classification results <br></p>
+<p>📝Lesson Learned, Tricks, and Tips for better LUC Results</p>
 </details>
 <details>
 <summary>
 <b><strong>Time series analysis &amp; Applications</strong> </b>
 </summary>
-<p>💻 Spatiotemporal Data &amp; Analysis in GEE 📈 📄 Application Ideas
-(E.g., Vegetation Recovery After Fires, etc.)</p>
+<p>💻 Spatiotemporal Data &amp; Analysis in GEE 📈 <br></p>
+<p>📝Applications</p>
 </details>
 <details>
 <summary>
@@ -491,7 +490,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1",
+      selectors: "h1,h2",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
