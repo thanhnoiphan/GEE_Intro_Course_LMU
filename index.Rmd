@@ -19,7 +19,7 @@ Last updated: `r Sys.Date()`
 
 🕙 Time: 9:00 AM - 16:00 PM 
 
-**Registration**: <br> To register for the course, kindly complete [this form](https://docs.google.com/forms/d/e/1FAIpQLSfmd0-tPsRUxbT9UWbqWZSGpPZiI75_4cWFIAM77JxGnNPcmA/viewform?usp=sf_link).
+**Registration**: <br> To register for the course, please complete [this form](https://docs.google.com/forms/d/e/1FAIpQLSfmd0-tPsRUxbT9UWbqWZSGpPZiI75_4cWFIAM77JxGnNPcmA/viewform?usp=sf_link).
 
 <br> 
 
