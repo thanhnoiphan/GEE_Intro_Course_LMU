@@ -1,0 +1,32 @@
+---
+toc: FALSE
+---
+<img src='./images/tnp_lmu.png' width='750'> 
+
+Extracurricular course: 
+
+# Introduction to Google Earth Engine for Big Data Analysis
+
+Last updated: `r Sys.Date()`
+
+<img src='./images/global.png' width='750'> <br> <br> 
+
+
+
+📅 Date: Oct 7-9, 2024
+
+🏡 Location: Computer Lab "CIP-2", Room 413, 3rd floor, Luisenstraße 37, 80333 München.
+
+🕙 Time: 9:00 AM - 16:00 PM 
+
+**Registration**: <br> To register for the course, kindly complete [this form](https://docs.google.com/forms/d/e/1FAIpQLSfmd0-tPsRUxbT9UWbqWZSGpPZiI75_4cWFIAM77JxGnNPcmA/viewform?usp=sf_link).
+
+<br> 
+
+This course is designed to provide Bachelor’s, Master’s, and PhD students at LMU with the essential resources to start using Google Earth Engine (GEE), explore the Earth Engine Data Catalog, and develop practical, real-world applications.
+
+<br> 
+
+Instructor: [Dr. Thanh-Noi Phan](https://www.geo.lmu.de/geographie/en/people/contact-page/thanh-noi-phan-8f56f36c.html), Department of Geography, Ludwig-Maximilians-Universität München 
+
+
