@@ -1,0 +1,181 @@
+// AUTOMATICALLY GENERATED: imported vars from saved link.
+var CONVERT_TO_IMPORT = (
+[{"type":"table","name":"FW23_Plots","record":{"id":"projects/morestepfires/assets/FW23_Plots"}},{"type":"image","name":"drone_img","record":{"id":"projects/morestepfires/assets/FW23_S1P1"}},{"type":"table","name":"LK_Draw","record":{"id":"projects/morestepfires/assets/Extraction_areas_field_data"}},{"type":"geometry","name":"them_area","record":{"geometries":[{"type":"Polygon","coordinates":[[[115.6676455070415,49.09589150942151],[115.6676455070415,49.09431257323211],[115.67074882287173,49.09431257323211],[115.67074882287173,49.09589150942151]]],"geodesic":false,"evenOdd":true}],"displayProperties":[{"type":"rectangle"}],"properties":{},"color":"#d63000","mode":"Geometry","shown":false,"locked":false}},{"type":"imageVisParam","name":"imageVisParam","record":{"params":{"opacity":1,"bands":["S2_NDVI"],"min":0.239931284596297,"max":0.4205746061167748,"palette":["ffffff","ce7e45","df923d","f1b555","fcd163","99b718","74a901","66a000","529400","3e8601","207401","056201","004c00","023b01","012e01","011d01","011301"]}}},{"type":"imageVisParam","name":"imageVisParam2","record":{"params":{"opacity":1,"bands":["b3","b2","b1"],"min":0.005256790202111006,"max":0.05147898197174072,"gamma":1.5000000000000002}}}])
+
+// AUTOMATICALLY GENERATED: location from saved link.
+Map.setCenter(115.66940235394623, 49.09512970902724, 20)
+
+imageVisParam = {"opacity":1,"bands":["S2_NDVI"],"min":0.239931284596297,"max":0.4205746061167748,"palette":["ffffff","ce7e45","df923d","f1b555","fcd163","99b718","74a901","66a000","529400","3e8601","207401","056201","004c00","023b01","012e01","011d01","011301"]};
+
+
+var visualization = {
+  min: 0.00,
+  max: 0.09,
+  gamma: 1.5,
+  //gamma: [1.5, 1.1, 1],
+bands: ['b3', 'b2', 'b1'],
+};
+
+/*------------------------------------------------------------------------------*/ 
+// visualization image: https://tutorials.geemap.org/Image/image_visualization/
+
+Map.addLayer(drone_img, imageVisParam2, 'RGB', false);
+
+//Arcording to Pix4D report: nir = b4, red = b3 , b1 = blue
+// Method 1)
+var b4_drone_img = drone_img.select("b4")
+var b3_drone_img = drone_img.select("b3")
+var b1_drone_img = drone_img.select("b1")
+var ndvi_drone_img = (b4_drone_img.subtract(b3_drone_img)).divide(b4_drone_img.add(b3_drone_img)).rename('Drone_NDVI_Buf'); 
+
+print(ndvi_drone_img); 
+Map.addLayer(ndvi_drone_img, {min: 0, max: 0.6, palette: ['black','red', 'orange', 'yellow', 'green']}, 'NDVI Drone');
+
+
+
+// Compute Normalized Difference Vegetation Index over S2-L2 product.
+// NDVI = (NIR - RED) / (NIR + RED), where
+// RED is B4, 664.5 nm
+// NIR is B8, 835.1 nm
+
+//Step 1: Access your boundary-defining geometry
+var Dornod = ee.FeatureCollection("FAO/GAUL/2015/level1")
+                  .filter(ee.Filter.eq('ADM1_NAME', 'Dornod')); //filter for entry that equals the UN country name 'Dornod'
+
+
+
+//Step 2: Access the Sentinel-2 Level-2A data and filter it for all the the images of the year 2020 that lie within the geometries boundaries. Keep only the relevant bands and filter for cloud coverage.
+var s2a_col_1 = ee.ImageCollection('COPERNICUS/S2_SR')
+                  .filterBounds(Dornod)
+                  .filterDate('2023-08-10', '2023-08-31')
+                  .select('B1','B2','B3','B4','B5','B6','B7','B8','B8A','B9','B11','B12')
+                  .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20));
+                  
+                  
+//Step 2: Access the Sentinel-2 Level-2A data and filter it for all the the images of the year 2020 that lie within the geometries boundaries. Keep only the relevant bands and filter for cloud coverage.
+var s2a_col_2 = ee.ImageCollection('COPERNICUS/S2_SR')
+                  .filterBounds(Dornod)
+                  .filterDate('2023-08-05', '2023-08-15')
+                  .select('B1','B2','B3','B4','B5','B6','B7','B8','B8A','B9','B11','B12')
+                  .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 30));
+
+
+
+//Step 3: Create a single Image by reducing by Median and clip it to the extent of the geometry
+var median_col_1 = s2a_col_1.median()
+                    .clip(Dornod);
+                    
+var median_col_2 = s2a_col_2.median()
+                    .clip(them_area);              
+
+
+var visParams = {'min': 400,'max': [4000,3000,3000],   'bands':'B8,B4,B3'};
+
+
+/*
+print(median_col_1); 
+Map.addLayer(median_col_1, visParams, 'S2 Dornod');
+
+print(median_col_2); 
+Map.addLayer(median_col_2, visParams, 'S2 Them Area');
+*/ 
+
+
+//Step 4: Calculate the NDVI manually: NDVI = (B8 - B4) / (B8 + B4)
+//this can be achieved using either simple band operations, .expression or .normalizedDifference
+/*
+
+//Variant 1: Simple band operations
+var nir = s2a_median.select('B8');
+var red = s2a_median.select('B4');
+var ndvi = nir.subtract(red).divide(nir.add(red)).rename('NDVI');
+print(ndvi, 'NDVI V1')
+
+// Display the result.
+var ndviParams = {min: -1, max: 1, palette: ['blue', 'white', 'green']};
+Map.addLayer(ndvi, ndviParams, 'NDVI V1');
+
+//Variant 2: .expression
+var ndvi_2 = s2a_median.expression(
+                      '(NIR-RED)/(NIR+RED)', {
+                        'NIR' : s2a_median.select('B8'),
+                        'RED' : s2a_median.select('B4')
+                      })
+                      .rename('NDVI');
+
+print(ndvi_2, 'NDVI V2')
+
+//Display the result
+Map.addLayer(ndvi_2, ndviParams , 'NDVI V2');
+
+*/ 
+//=============================================================================================
+
+//Variant 3: .normalizedDifference(NIR, RED)
+//find out how .normalizedDifference works by checking Docs -> ee.Image -> normalizedDifference
+var ndvi_col_1 = median_col_1.normalizedDifference(['B8', 'B4'])
+                      .rename('S2_NDVI');
+                      
+var ndvi_col_2 = median_col_2.normalizedDifference(['B8', 'B4'])
+                      .rename('S2_NDVI');
+
+//You can also create more complex colour palettes via hex strings.
+//this color combination is taken from the Examples script Image -> Normalized Difference:
+var palette = ['FFFFFF', 'CE7E45', 'DF923D', 'F1B555', 'FCD163', '99B718',
+               '74A901', '66A000', '529400', '3E8601', '207401', '056201',
+               '004C00', '023B01', '012E01', '011D01', '011301'];
+//Please keep in mind that for this palette, you should set your minimum visible value to 0, as it s designed for this purpose.
+//This is due to it being a gradient from brown to green tones, with a heavy focus on the green side. If we would set min: -1, NDVI = 0 would already be displayed in a dark green tone.
+//You can recognize this by checking the palette-section of your layer information for ndvi_3.
+
+// Display the input image and the NDVI derived from it.
+Map.addLayer(ndvi_col_1, {min: 0, max: 1, palette: palette}, 'NDVI Col 1')
+//Map.addLayer(ndvi_col_2, {min: 0, max: 1, palette: palette}, 'NDVI Col 2')
+
+
+//=============================================================================================
+/*
+def getEVI(image):
+    # Compute the EVI using an expression.
+    EVI = image.expression(
+        '2.5 * ((NIR - RED) / (NIR + 6 * RED - 7.5 * BLUE + 1))', {
+            'NIR': image.select('B8').divide(10000),
+            'RED': image.select('B4').divide(10000),
+            'BLUE': image.select('B2').divide(10000)
+        }).rename("EVI")
+
+    image = image.addBands(EVI)
+
+    return(image)
+    
+*/     
+
+// calculate the evi
+var evi_median_col_1 = median_col_1.expression("2.5*((nir-red)/(nir+6*red-7.5*blue+1))",
+  {
+    nir : median_col_1.select("B5").multiply(0.0001),
+    red : median_col_1.select("B4").multiply(0.0001),
+    blue: median_col_1.select("B2").multiply(0.0001)
+    }).rename("S2_EVI");
+
+var evi_median_col_2 = median_col_2.expression("2.5*((nir-red)/(nir+6*red-7.5*blue+1))",
+  {
+    nir : median_col_2.select("B5").multiply(0.0001),
+    red : median_col_2.select("B4").multiply(0.0001),
+    blue: median_col_2.select("B2").multiply(0.0001)
+    }).rename("S2_EVI");
+    
+// get min-max value: for the palette
+// Ref: https://stackoverflow.com/questions/66636490/how-to-find-min-and-max-pixel-value-of-an-index
+
+var evi_minMaxValues = evi_median_col_1.reduceRegion({reducer: ee.Reducer.minMax(),
+                                 geometry: Dornod 
+                                 })
+
+print('minMaxValues', evi_minMaxValues);
+
+// add the evi to the map
+Map.addLayer(evi_median_col_1, {min: 0.06, max: 0.135, palette: palette}, 'evi_median_col_1')
+
+
+//=============================================================================================

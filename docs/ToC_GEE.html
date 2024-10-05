@@ -10,6 +10,7 @@
 
 
 
+<meta name="date" content="2024-10-06" />
 
 <title>ToC_GEE.knit</title>
 
@@ -323,6 +324,9 @@ div.tocify {
 <li>
   <a href="./data.html">Data</a>
 </li>
+<li>
+  <a href="./Register_GEE.html">GEE Account</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -344,101 +348,188 @@ div.tocify {
 </div>
 
 
-<div id="table-of-contents" class="section level1">
-<h1>Table of Contents</h1>
-<pre><code>More details will be provided soon! </code></pre>
+<div id="introduction" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Introduction</h1>
+<div id="big-data" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Big Data</h2>
+<p><img src='ToC_Images/1_BigData.png' width='850'></p>
 </div>
-<div id="day-1" class="section level1">
-<h1>Day 1</h1>
-</details>
-<details>
-<summary>
-<b><strong>Introduction to GEE for Big Data Analysis</strong> </b>
-</summary>
-<p>📚<strong>Big Data</strong> <br></p>
-<p>📚<strong>Google Earth Engine (GEE)</strong> <br></p>
-</details>
-<details>
-<summary>
-<b><strong>Getting started with GEE</strong> </b>
-</summary>
-<p>💻The Google Earth Engine Interface <br></p>
-<p>💻JavaScript Basic in GEE <br></p>
-<p>📝Tips &amp; Learning resources</p>
-</details>
-<details>
-<summary>
-<b><strong>Hands-on Practice</strong> </b>
-</summary>
-<p>💻 Exploring GEE Data Catalog</p>
-<p>💻 Import your own data to GEE platform (data will be provided)</p>
-<p>💻 Export data (different data types) from GEE platform to local
-machine for further personal prefer analysis</p>
+<div id="geospatial-big-data" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Geospatial Big
+Data</h2>
+<p><strong>NASA was generating 12.1TB of data every single day</strong>
+(in 2017)</p>
+<p><img src='https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13717-020-00255-4/MediaObjects/13717_2020_255_Fig3_HTML.png?as=webp' width='850'></p>
+<p><span style="float:right"><a
+href="https://www.siliconrepublic.com/enterprise/nasa-data-figures">Source</a></span></p>
+<p><br> <strong>Satellites provide over 150 terabytes per day</strong>
+<img src='https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13717-020-00255-4/MediaObjects/13717_2020_255_Fig7_HTML.png?as=webp' width='850'>
+<span style="float:right"><a
+href="https://www.esa.int/Applications/Observing_the_Earth/Working_towards_AI_and_Earth_observation">Source:
+ESA</a></span></p>
+<p><strong>Landsat Data</strong></p>
+<p><img src='https://landsat.gsfc.nasa.gov/wp-content/uploads/2023/05/LandsatNext_Data_Volumes.png' width='850'></p>
+<p><br></p>
+<p><img src='ToC_Images/Why_need_big_data.jpg' width='850'></p>
+<p><br></p>
 </div>
-<div id="day-2" class="section level1">
-<h1>Day 2</h1>
+<div id="cloud-computing" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Cloud Computing</h2>
+<p><img src='ToC_Images/what_is_cc.png' width='850'></p>
+<p><br></p>
+<p><img src='ToC_Images/why_cc.png' width='850'></p>
+<p><br> <strong>Can you estimate how many Landsat scenes are needed to
+cover this area?</strong>
+<img src='ToC_Images/how_many_scene.jpg' width='850'></p>
+<p><br> <strong>What difficulties arise when the study area is
+large?</strong>
+<img src='ToC_Images/what_are_difficulties.jpg' width='850'> <span
+style="float:right">Landsat 9, 01.7.2024 - 17.7.2024</span></p>
+<p><br></p>
+</div>
+<div id="google-earth-engine" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Google Earth
+Engine</h2>
+<p><img src='ToC_Images/GEE.jpg' width='850'></p>
+</div>
+<div id="getting-started-with-gee" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Getting started with
+GEE</h2>
+<p>The Google Earth Engine Interface
+<img src='ToC_Images/gee_interface.jpg' width='850'></p>
+<p>JavaScript Basic in GEE</p>
+</div>
+<div id="exploring-gee-data-catalog" class="section level2"
+number="1.6">
+<h2><span class="header-section-number">1.6</span> Exploring GEE Data
+Catalog</h2>
+<p><strong>Raster vs. Vector</strong> <br>
+<img src='ToC_Images/vector_raster.png' width='850'></p>
+<p><span style="float:right"><a
+href="https://gsp.humboldt.edu/olm/Lessons/GIS/08%20Rasters/RasterToVector.html">gsp.humboldt.edu</a></span></p>
+<p><strong>Raster</strong> <br></p>
+<p><strong>Resolution</strong>: there are four types of resolution:
+radiometric, spatial, spectral, and temporal. “Spatial resolution
+relates to pixel size, temporal resolution to observation frequency,
+radiometric resolution to the number of unique values, and spectral
+resolution to binwidth in the electromagnetic spectrum.” <br></p>
+<p><img src='https://www.researchgate.net/profile/Virginia-Iglesias/publication/367070608/figure/fig1/AS:11431281112759710@1673535034920/Different-kinds-of-resolution-with-examples-of-lower-and-higher-resolution-data-Spatial_W640.jpg' width='850'>
+<br> <span style="float:right"><a
+href="https://peercommunityjournal.org/articles/10.24072/pcjournal.223/">Mahood
+et a. (2023)</a></span></p>
+<p><br></p>
+<p><strong>Landsat 8 vs. Sentinel 2</strong> <br>
+<img src='https://landsat.gsfc.nasa.gov/wp-content/uploads/2023/06/Landsat_vs_Sentinel2-2000x895.jpg'width='850'></p>
+<p><br></p>
+<p><strong>Vector</strong> <br></p>
+<p><br></p>
+</div>
+<div id="import-data-to-gee" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> Import data to
+GEE</h2>
+<p><br></p>
+<p>Import drone imagery and shapefile provided in “Data” session to your
+GEE account.</p>
+<p><br></p>
+</div>
+<div id="export-data-from-gee" class="section level2" number="1.8">
+<h2><span class="header-section-number">1.8</span> Export data from
+GEE</h2>
+</div>
+</div>
 <div id="data-management-analysis-and-applications"
-class="section level3">
-<h3>Data Management, Analysis, and Applications</h3>
-</details>
-<details>
-<summary>
-<b><strong>A very brief introduction</strong> </b>
-</summary>
-<p>📄 Data Management and Analysis in GEE <br></p>
-</details>
-<details>
-<summary>
-<b><strong>Hands-on Practice</strong> </b>
-</summary>
-<p>💻 Calculating Image Indices <br></p>
-<p>💻 Cloud Masking <br></p>
-<p>💻 Image Composition <br></p>
-<p>📝 Tricks, and Tips <br></p>
-</details>
-<details>
-<summary>
-<b><strong>Applications: Land Cover Classification</strong> </b>
-</summary>
-<p>📝 A very brief introduction <br> 🔸Machine Learning in GEE <br>
-🔸Supervised Land Cover Classification <br></p>
-<p>1️⃣️Select Area of Interest <br></p>
-<p>2️⃣Prepare input Data (Satellite Data, Auxiliary Data) <br></p>
-<p>3️⃣Prepare Training and Validation Samples <br></p>
+class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Data Management,
+Analysis, and Applications</h1>
+<div id="remote-sensing-indices" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Remote Sensing
+Indices</h2>
+<p>Remote indices (spectral indices) are used to enhance particular land
+surface features or properties, e.g. vegetation, soil, water, urban,
+fires…</p>
+<p><br></p>
+<p><img src='ToC_Images/indice.jpg' width='850'> <span
+style="float:right"><a href="https://gisresources.com">GIS
+Resources</a></span></p>
+<p><br></p>
+<p><img src='ToC_Images/spectral_landsat.png' width='850'> <span
+style="float:right"><a
+href="https://www.usgs.gov/media/images/spectral-bandpasses-all-landsat-sensors">USGS</a></span></p>
+<p><br></p>
+<p><img src='ToC_Images/L8.jpg' width='850'> <span
+style="float:right"><a
+href="https://www.usgs.gov/media/images/landsat-8-band-designations">USGS</a></span></p>
+<p><br> <strong>Water Indices - NDWI</strong> <br>
+<img src='ToC_Images/water_indice.jpg' width='850'></p>
+<p><br></p>
+</div>
+<div id="cloud-masking" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Cloud Masking</h2>
+<p><br> <img src='ToC_Images/cloud_mask_s2.jpg' width='850'></p>
+<p><br></p>
+</div>
+<div id="reducer" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Reducer</h2>
+<p>Ref: <a
+href="https://scienceparkstudygroup.github.io/GoogleEarthEngine/04-reducers/">Reducer</a></p>
+</div>
+<div id="image-composition" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Image
+Composition</h2>
+<p><br> <strong>Sentinel 2 (Median Composition, Jun-Jul 2020) </strong>
+<img src='ToC_Images/raster_image.png' width='850'></p>
 </div>
 </div>
-<div id="day-3" class="section level1">
-<h1>Day 3</h1>
-<div id="data-management-analysis-and-applications-cont."
-class="section level3">
-<h3>Data Management, Analysis, and Applications (Cont.)</h3>
-</details>
-<details>
-<summary>
-<b><strong>Land Cover Classification (Cont.)</strong> </b>
-</summary>
-<p>4️⃣Apply ML Classifier (e.g., Random Forest) <br> 5️⃣Accuracy
-Assessment <br></p>
-</details>
-<details>
-<summary>
-<b><strong>Explore the LUC results</strong> </b>
-</summary>
-<p>📝Discussing the classification results <br></p>
-<p>📝Lesson Learned, Tricks, and Tips for better LUC Results</p>
-</details>
-<details>
-<summary>
-<b><strong>Time series analysis &amp; Applications</strong> </b>
-</summary>
-<p>💻 Spatiotemporal Data &amp; Analysis in GEE 📈 <br></p>
-<p>📝Applications</p>
-</details>
-<details>
-<summary>
-<b><strong>Wrap-Up &amp; Remark</strong> </b>
-</summary>
+<div id="land-cover-classification-in-gee" class="section level1"
+number="3">
+<h1><span class="header-section-number">3</span> Land Cover
+Classification in GEE</h1>
+<div id="selectidentify-area-of-interest" class="section level2"
+number="3.1">
+<h2><span class="header-section-number">3.1</span> Select/Identify Area
+of Interest</h2>
 </div>
+<div id="prepare-input-data" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Prepare Input
+Data</h2>
+<p><br></p>
+<p><img src='ToC_Images/more_is_less.jpg' width='850'> <br> <a
+href="https://doi.org/10.3390/rs12152411" style="float:right">Phan et
+al. 2020</a></p>
+<p><br></p>
+</div>
+<div id="collect-samples" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Collect Samples</h2>
+<p><br></p>
+<p><strong>Different sampling approaches and their major advantages and
+drawbacks.</strong> <br></p>
+<p><img src='ToC_Images/Sampling-designs0.jpg' width='850'> <br> <a
+href="https://core.ac.uk/reader/33897040" style="float:right">Banko.,
+1998</a></p>
+<p><br></p>
+<p><strong>A simple, fast, and accurate method</strong> <br></p>
+<p><img src='ToC_Images/collecting_samples.png' width='850'> <br> <a
+href="https://doi.org/10.1080/10106049.2022.2087759"
+style="float:right">Phan et al. 2022</a></p>
+<p><br></p>
+</div>
+<div id="ml-classifier" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> ML Classifier</h2>
+<p><br></p>
+<p><img src='ToC_Images/sensors-18-00018-ag.png' width='850'> <br> <a
+href="https://doi.org/10.3390/s18010018" style="float:right">Phan et
+al. 2018</a></p>
+<p><br></p>
+</div>
+<div id="accuracy-assessment" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Accuracy
+Assessment</h2>
+</div>
+</div>
+<div id="time-series" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Time series</h1>
+<p><br></p>
+<p><img src='ToC_Images/timeseries.png' width='850'></p>
 </div>
 
 

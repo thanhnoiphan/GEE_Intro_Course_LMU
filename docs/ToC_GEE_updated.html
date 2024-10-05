@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+<meta name="date" content="2024-10-06" />
+
+<title>ToC_GEE_updated.knit</title>
+
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Home</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="./Schedule.html">Schedule</a>
+</li>
+<li>
+  <a href="./ToC_GEE.html">Table of Contents</a>
+</li>
+<li>
+  <a href="./data.html">Data</a>
+</li>
+<li>
+  <a href="./Register_GEE.html">GEE Account</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/thanhnoiphan/GEE_Intro_Course_LMU">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div id="introduction" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Introduction</h1>
+<div id="big-data" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Big Data</h2>
+<p><img src='ToC_Images/1_BigData.png' width='850'></p>
+</div>
+<div id="geospatial-big-data" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Geospatial Big
+Data</h2>
+<p><strong>NASA was generating 12.1TB of data every single day</strong>
+(in 2017)</p>
+<p><img src='https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13717-020-00255-4/MediaObjects/13717_2020_255_Fig3_HTML.png?as=webp' width='850'></p>
+<p><span style="float:right"><a
+href="https://www.siliconrepublic.com/enterprise/nasa-data-figures">Source</a></span></p>
+<p><br> <strong>Satellites provide over 150 terabytes per day</strong>
+<img src='https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13717-020-00255-4/MediaObjects/13717_2020_255_Fig7_HTML.png?as=webp' width='850'>
+<span style="float:right"><a
+href="https://www.esa.int/Applications/Observing_the_Earth/Working_towards_AI_and_Earth_observation">Source:
+ESA</a></span></p>
+<p><strong>Landsat Data</strong></p>
+<p><img src='https://landsat.gsfc.nasa.gov/wp-content/uploads/2023/05/LandsatNext_Data_Volumes.png' width='850'></p>
+<p><br></p>
+<p><img src='ToC_Images/Why_need_big_data.jpg' width='850'></p>
+<p><br></p>
+</div>
+<div id="cloud-computing" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Cloud Computing</h2>
+<p><img src='ToC_Images/what_is_cc.png' width='850'></p>
+<p><br></p>
+<p><img src='ToC_Images/why_cc.png' width='850'></p>
+<p><br> <strong>Can you estimate how many Landsat scenes are needed to
+cover this area?</strong>
+<img src='ToC_Images/how_many_scene.jpg' width='850'></p>
+<p><br> <strong>What difficulties arise when the study area is
+large?</strong>
+<img src='ToC_Images/what_are_difficulties.jpg' width='850'> <span
+style="float:right">Landsat 9, 01.7.2024 - 17.7.2024</span></p>
+<p><br></p>
+</div>
+<div id="google-earth-engine" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Google Earth
+Engine</h2>
+<p><img src='ToC_Images/GEE.jpg' width='850'></p>
+</div>
+<div id="getting-started-with-gee" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Getting started with
+GEE</h2>
+<p>The Google Earth Engine Interface
+<img src='ToC_Images/gee_interface.jpg' width='850'></p>
+<p>JavaScript Basic in GEE</p>
+</div>
+<div id="exploring-gee-data-catalog" class="section level2"
+number="1.6">
+<h2><span class="header-section-number">1.6</span> Exploring GEE Data
+Catalog</h2>
+<p><strong>Raster vs. Vector</strong> <br>
+<img src='ToC_Images/vector_raster.png' width='850'></p>
+<p><span style="float:right"><a
+href="https://gsp.humboldt.edu/olm/Lessons/GIS/08%20Rasters/RasterToVector.html">gsp.humboldt.edu</a></span></p>
+<p><strong>Raster</strong> <br></p>
+<p><strong>Resolution</strong>: there are four types of resolution:
+radiometric, spatial, spectral, and temporal. “Spatial resolution
+relates to pixel size, temporal resolution to observation frequency,
+radiometric resolution to the number of unique values, and spectral
+resolution to binwidth in the electromagnetic spectrum.” <br></p>
+<p><img src='https://www.researchgate.net/profile/Virginia-Iglesias/publication/367070608/figure/fig1/AS:11431281112759710@1673535034920/Different-kinds-of-resolution-with-examples-of-lower-and-higher-resolution-data-Spatial_W640.jpg' width='850'>
+<br> <span style="float:right"><a
+href="https://peercommunityjournal.org/articles/10.24072/pcjournal.223/">Mahood
+et a. (2023)</a></span></p>
+<p><br></p>
+<p><strong>Landsat 8 vs. Sentinel 2</strong> <br>
+<img src='https://landsat.gsfc.nasa.gov/wp-content/uploads/2023/06/Landsat_vs_Sentinel2-2000x895.jpg'width='850'></p>
+<p><br></p>
+<p><strong>Vector</strong> <br></p>
+<p><br></p>
+</div>
+<div id="import-data-to-gee" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> Import data to
+GEE</h2>
+<p><br></p>
+<p>Import drone imagery and shapefile provided in “Data” session to your
+GEE account.</p>
+<p><br></p>
+</div>
+<div id="export-data-from-gee" class="section level2" number="1.8">
+<h2><span class="header-section-number">1.8</span> Export data from
+GEE</h2>
+</div>
+</div>
+<div id="data-management-analysis-and-applications"
+class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Data Management,
+Analysis, and Applications</h1>
+<div id="remote-sensing-indices" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Remote Sensing
+Indices</h2>
+<p>Remote indices (spectral indices) are used to enhance particular land
+surface features or properties, e.g. vegetation, soil, water, urban,
+fires…</p>
+<p><br></p>
+<p><img src='ToC_Images/indice.jpg' width='850'> <span
+style="float:right"><a href="https://gisresources.com">GIS
+Resources</a></span></p>
+<p><br></p>
+<p><img src='ToC_Images/spectral_landsat.png' width='850'> <span
+style="float:right"><a
+href="https://www.usgs.gov/media/images/spectral-bandpasses-all-landsat-sensors">USGS</a></span></p>
+<p><br></p>
+<p><img src='ToC_Images/L8.jpg' width='850'> <span
+style="float:right"><a
+href="https://www.usgs.gov/media/images/landsat-8-band-designations">USGS</a></span></p>
+<p><br> <strong>Water Indices - NDWI</strong> <br>
+<img src='ToC_Images/water_indice.jpg' width='850'></p>
+<p><br></p>
+</div>
+<div id="cloud-masking" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Cloud Masking</h2>
+<p><br> <img src='ToC_Images/cloud_mask_s2.jpg' width='850'></p>
+<p><br></p>
+</div>
+<div id="reducer" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Reducer</h2>
+<p>Ref: <a
+href="https://scienceparkstudygroup.github.io/GoogleEarthEngine/04-reducers/">Reducer</a></p>
+</div>
+<div id="image-composition" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Image
+Composition</h2>
+<p><br> <strong>Sentinel 2 (Median Composition, Jun-Jul 2020) </strong>
+<img src='ToC_Images/raster_image.png' width='850'></p>
+</div>
+</div>
+<div id="land-cover-classification-in-gee" class="section level1"
+number="3">
+<h1><span class="header-section-number">3</span> Land Cover
+Classification in GEE</h1>
+<div id="selectidentify-area-of-interest" class="section level2"
+number="3.1">
+<h2><span class="header-section-number">3.1</span> Select/Identify Area
+of Interest</h2>
+</div>
+<div id="prepare-input-data" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Prepare Input
+Data</h2>
+<p><br></p>
+<p><img src='ToC_Images/more_is_less.jpg' width='850'> <br> <a
+href="https://doi.org/10.3390/rs12152411" style="float:right">Phan et
+al. 2020</a></p>
+<p><br></p>
+</div>
+<div id="collect-samples" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Collect Samples</h2>
+<p><br></p>
+<p><strong>Different sampling approaches and their major advantages and
+drawbacks.</strong> <br></p>
+<p><img src='ToC_Images/Sampling-designs0.jpg' width='850'> <br> <a
+href="https://core.ac.uk/reader/33897040" style="float:right">Banko.,
+1998</a></p>
+<p><br></p>
+<p><strong>A simple, fast, and accurate method</strong> <br></p>
+<p><img src='ToC_Images/collecting_samples.png' width='850'> <br> <a
+href="https://doi.org/10.1080/10106049.2022.2087759"
+style="float:right">Phan et al. 2022</a></p>
+<p><br></p>
+</div>
+<div id="ml-classifier" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> ML Classifier</h2>
+<p><br></p>
+<p><img src='ToC_Images/sensors-18-00018-ag.png' width='850'> <br> <a
+href="https://doi.org/10.3390/s18010018" style="float:right">Phan et
+al. 2018</a></p>
+<p><br></p>
+</div>
+<div id="accuracy-assessment" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Accuracy
+Assessment</h2>
+</div>
+</div>
+<div id="time-series" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Time series</h1>
+<p><br></p>
+<p><img src='ToC_Images/timeseries.png' width='850'></p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
